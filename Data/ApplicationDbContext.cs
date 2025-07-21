@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace DahiraAgency.Data
 {
@@ -70,6 +72,20 @@ namespace DahiraAgency.Data
                     .IsRequired()
                     .HasMaxLength(50);
             });
+
+            var defaultUser = new IdentityUser
+            {
+                Id = "df1c3a0f-1234-4cde-bb55-d5f15a6aabcd",
+                UserName = "admin@touristagency.com",
+                NormalizedUserName = "ADMIN@TOURISTAGENCY.COM",
+                Email = "admin@touristagency.com",
+                NormalizedEmail = "ADMIN@TOURISTAGENCY.COM",
+                EmailConfirmed = true,
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(
+                    new IdentityUser { UserName = "admin@touristagency.com" },
+                    "Admin123!")
+            };
+            modelBuilder.Entity<IdentityUser>().HasData(defaultUser);
         }
     }
 }
