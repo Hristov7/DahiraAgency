@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36212.18 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DahiraAgency", "DahiraAgency.csproj", "{F2E61592-1311-4E20-B21D-ABD54748407C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dahira.Tests", "..\Dahira.Tests\Dahira.Tests.csproj", "{CCD904B0-A505-43A8-9177-0B44AA77FBDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F2E61592-1311-4E20-B21D-ABD54748407C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2E61592-1311-4E20-B21D-ABD54748407C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2E61592-1311-4E20-B21D-ABD54748407C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCD904B0-A505-43A8-9177-0B44AA77FBDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCD904B0-A505-43A8-9177-0B44AA77FBDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCD904B0-A505-43A8-9177-0B44AA77FBDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCD904B0-A505-43A8-9177-0B44AA77FBDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

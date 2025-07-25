@@ -1,0 +1,35 @@
+﻿@model DahiraAgency.Data.Destination
+
+@{
+    ViewBag.Title = "Edit Destination";
+}
+
+<h2>Edit Destination</h2>
+
+<form asp-area="Admin" asp-controller="Destinations" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+    </div>
+    <div>
+        <label asp-for="CategoryId"></label>
+        <input asp-for="CategoryId" />
+    </div>
+    <button type="submit">Save</button>
+</form>
+
+<a asp-action="Index">Back to List</a>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

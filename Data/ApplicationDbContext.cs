@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace DahiraAgency.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -73,7 +73,7 @@ namespace DahiraAgency.Data
                     .HasMaxLength(50);
             });
 
-            var defaultUser = new IdentityUser
+            var defaultUser = new ApplicationUser
             {
                 Id = "df1c3a0f-1234-4cde-bb55-d5f15a6aabcd",
                 UserName = "admin@touristagency.com",
@@ -81,11 +81,23 @@ namespace DahiraAgency.Data
                 Email = "admin@touristagency.com",
                 NormalizedEmail = "ADMIN@TOURISTAGENCY.COM",
                 EmailConfirmed = true,
-                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(
-                    new IdentityUser { UserName = "admin@touristagency.com" },
+                PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(
+                    new ApplicationUser { UserName = "admin@touristagency.com" },
                     "Admin123!")
             };
-            modelBuilder.Entity<IdentityUser>().HasData(defaultUser);
+            modelBuilder.Entity<ApplicationUser>().HasData(defaultUser);
+
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Beach" },
+                new Category { Id = 2, Name = "Mountain" },
+                new Category { Id = 3, Name = "City" }
+            );
+
+            modelBuilder.Entity<Destination>().HasData(
+                new Destination { Id = 1, Name = "Dubai", Description = "City of luxury.", CategoryId = 3, ImageUrl = "https://lp-cms-production.imgix.net/features/2017/09/dubai-marina-skyline-2c8f1708f2a1.jpg?auto=format,compress&q=72&w=1440&h=810&fit=crop", Price = 1900 },
+                new Destination { Id = 2, Name = "Swiss Alps", Description = "Beautiful mountains.", CategoryId = 2, ImageUrl = "https://www.montagnaestate.it/wp-content/uploads/8otmnnrjuhm.jpg", Price = 1500 },
+                new Destination { Id = 3, Name = "Maldives", Description = "Stunning beaches.", CategoryId = 1, ImageUrl = "https://digital.ihg.com/is/image/ihg/vignette-collection-noonu-atoll-9970118335-2x1", Price = 2000 }
+            );
         }
     }
 }
