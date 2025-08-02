@@ -4,6 +4,8 @@ using DahiraAgency.Data.Repositories;
 using DahiraAgency.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using NoOpEmailSender = DahiraAgency.Data.NoOpEmailSender;
 
 namespace DahiraAgency
 {
@@ -30,6 +32,9 @@ namespace DahiraAgency
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IFavouriteService, FavouriteService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddSignalR();
+
+            builder.Services.AddTransient<IEmailSender, NoOpEmailSender>();
 
             var app = builder.Build();
 
@@ -60,6 +65,7 @@ namespace DahiraAgency
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
+            app.MapHub<ChatHub>("chatHub");
 
             app.Run();
         }
