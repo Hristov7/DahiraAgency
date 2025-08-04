@@ -50,7 +50,7 @@ namespace DahiraAgency.Data
             // Favourite
             modelBuilder.Entity<Favourite>(entity =>
             {
-                entity.HasKey(f => f.Id);
+                entity.HasKey(f => new { f.UserId, f.DestinationId });
 
                 entity.HasOne(f => f.User)
                     .WithMany(u => u.Favourites)
